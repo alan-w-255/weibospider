@@ -6,7 +6,7 @@ from weibospider.items import WeibospiderItem
 
 
 class WbspiderSpider(scrapy.Spider):
-    name = "WBspider"
+    name = "wbspider"
 
     weibo_start_url = 'http://m.weibo.cn/container/getIndex?uid=1746664450&luicode=10000011&lfid=1005051746664450&featurecode=20000180&type=uid&value=1746664450&containerid=1076031746664450'
 
@@ -20,7 +20,7 @@ class WbspiderSpider(scrapy.Spider):
         "Referer": "http://m.weibo.cn/u/1746664450?uid=1746664450&luicode=10000011&lfid=1005051746664450&featurecode=20000180",
         "Accept-Encoding": "gzip, deflate, sdch",
         "Accept-Language": "en-US,en;q=0.8",
-        "Cookie": "T_WM=75395c0795ce5d9d2eac9bc00a651e04; M_WEIBOCN_PARAMS=from%3Dfeed%26featurecode%3D20000180%26oid%3D4073699546694296%26luicode%3D10000011%26lfid%3D1005051746664450%26fid%3D1005051746664450%26uicode%3D10000011"
+        #"Cookie": "T_WM=75395c0795ce5d9d2eac9bc00a651e04; M_WEIBOCN_PARAMS=from%3Dfeed%26featurecode%3D20000180%26oid%3D4073699546694296%26luicode%3D10000011%26lfid%3D1005051746664450%26fid%3D1005051746664450%26uicode%3D10000011"
         }
 
         

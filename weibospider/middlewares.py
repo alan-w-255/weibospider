@@ -5,8 +5,41 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
+import random
 from scrapy import signals
 
+class RandomUserAgent(object):
+    """
+    使用随机的user agent, 防止被ban.
+    """
+    def __init__(self, agents):
+        self.agents = agents
+            
+            
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler.settings.getlist('USER_AGENTS'))
+
+    def process_request(self, request, spider):
+        _agent = random.choice(self.agents)
+        request.header.setdefault("User-Agent", _agent)
+        print("*************************usering agent**************")
+        print(_agent)
+
+class RandomProxy(object):
+    """
+    使用随机的 proxy, 防止被ban
+    """
+    def __init__(self, proxies):
+        self.proxies = proxies
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler.settings.getlist('PROXIES'))
+
+    def process_request(self, request, spider):
+        _proxy = random.choice(self.proxies)
+        request.header.setdefault()
 
 class WeibospiderSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
@@ -55,5 +88,3 @@ class WeibospiderSpiderMiddleware(object):
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
 
-        
-    
