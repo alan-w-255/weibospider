@@ -8,14 +8,15 @@
 import random
 from scrapy import signals
 
+
 class RandomUserAgent(object):
     """
     使用随机的user agent, 防止被ban.
     """
     def __init__(self, agents):
         self.agents = agents
-            
-            
+
+
     @classmethod
     def from_crawler(cls, crawler):
         return cls(crawler.settings.getlist('USER_AGENTS'))
@@ -26,10 +27,13 @@ class RandomUserAgent(object):
         print("*************************usering agent**************")
         print(_agent)
 
+
 class RandomProxy(object):
     """
     使用随机的 proxy, 防止被ban
     """
+    #TODO: 调用数据库， 从中获取proxy
+    
     def __init__(self, proxies):
         self.proxies = proxies
 
@@ -39,7 +43,8 @@ class RandomProxy(object):
 
     def process_request(self, request, spider):
         _proxy = random.choice(self.proxies)
-        request.header.setdefault()
+        request.meta['proxy'] = _proxy
+
 
 class WeibospiderSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,

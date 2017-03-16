@@ -4,7 +4,6 @@ import scrapy
 import unicodedata
 from weibospider.items import WeibospiderItem
 
-
 class WbspiderSpider(scrapy.Spider):
     name = "wbspider"
 
@@ -23,7 +22,7 @@ class WbspiderSpider(scrapy.Spider):
         #"Cookie": "T_WM=75395c0795ce5d9d2eac9bc00a651e04; M_WEIBOCN_PARAMS=from%3Dfeed%26featurecode%3D20000180%26oid%3D4073699546694296%26luicode%3D10000011%26lfid%3D1005051746664450%26fid%3D1005051746664450%26uicode%3D10000011"
         }
 
-        
+
     def start_requests(self):
         yield scrapy.http.Request(url=self.weibo_start_url, headers=self.weibo_start_headers)
 
