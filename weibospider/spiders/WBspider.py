@@ -7,24 +7,11 @@ from weibospider.items import WeibospiderItem
 class WbspiderSpider(scrapy.Spider):
     name = "wbspider"
 
-    weibo_start_url = 'http://m.weibo.cn/container/getIndex?uid=1746664450&luicode=10000011&lfid=1005051746664450&featurecode=20000180&type=uid&value=1746664450&containerid=1076031746664450'
-
-    weibo_start_headers = {
-        "Host": "m.weibo.cn",
-        "Connection": "keep-alive",
-        "Accept": "application/json, text/plain, */*",
-        "X-Requested-With": "XMLHttpRequest",
-        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X)'\
-        ' AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1",
-        "Referer": "http://m.weibo.cn/u/1746664450?uid=1746664450&luicode=10000011&lfid=1005051746664450&featurecode=20000180",
-        "Accept-Encoding": "gzip, deflate, sdch",
-        "Accept-Language": "en-US,en;q=0.8",
-        #"Cookie": "T_WM=75395c0795ce5d9d2eac9bc00a651e04; M_WEIBOCN_PARAMS=from%3Dfeed%26featurecode%3D20000180%26oid%3D4073699546694296%26luicode%3D10000011%26lfid%3D1005051746664450%26fid%3D1005051746664450%26uicode%3D10000011"
-        }
-
-
-    def start_requests(self):
-        yield scrapy.http.Request(url=self.weibo_start_url, headers=self.weibo_start_headers)
+    start_urls=[
+        'http://m.weibo.cn/container/getIndex?type=uid&value=1239246050&containerid=1076031239246050',
+        'http://m.weibo.cn/container/getIndex?uid=3200673035&featurecode=20000180&type=uid&value=1239246050&containerid=1076033200673035',
+        'http://m.weibo.cn/container/getIndex?uid=1502739807&featurecode=20000180&type=uid&value=1239246050&containerid=1076031502739807',
+    ]
 
     def create_comment_ajax_requests(self, response: 'cardlist response', page_num):
         """
