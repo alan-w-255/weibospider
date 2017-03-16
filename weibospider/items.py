@@ -6,6 +6,7 @@
 # http://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from scrapy.contrib.pipeline.images import ImagesPipeline
 
 
 class WeibospiderItem(scrapy.Item):
@@ -16,3 +17,8 @@ class WeibospiderItem(scrapy.Item):
     create_at = scrapy.Field()
     user_id = scrapy.Field()
     user_screen_name = scrapy.Field()
+    user_gender = scrapy.Field()
+    attitudes_count = scrapy.Field()
+    comments_count = scrapy.Field()
+    image_urls = scrapy.Field()
+    images = scrapy.Field()

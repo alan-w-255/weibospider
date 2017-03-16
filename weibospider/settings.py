@@ -86,9 +86,11 @@ COOKIES_ENABLED = False
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'weibospider.pipelines.WeibospiderPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    #'weibospider.pipelines.WeibospiderPipeline': 300,
+    'scrapy.contrib.pipeline.images.ImagesPipeline': 5,
+    #'weibospider.pipelines.WBImgPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -112,3 +114,12 @@ COOKIES_ENABLED = False
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 FEED_EXPORT_ENCODING='utf-8'
+IMAGES_STORE = "C:\\Users\\Alan\\Desktop\\weibospider\\images"
+IMAGES_EXPIRES = 90
+IMAGES_MIN_HEIGHT = 11
+IMAGES_MIN_WIDTH = 11
+IMAGES_THUMBS = {
+    'small': (50, 50),
+    'big': (270, 270),
+}
+

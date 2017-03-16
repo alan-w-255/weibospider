@@ -1,6 +1,10 @@
 import psycopg2
 
 class DB(object):
+    
+    def __init__(self):
+        self.id = 0
+    
     conn = psycopg2.connect(
         database="mydb",
         user="alan",
