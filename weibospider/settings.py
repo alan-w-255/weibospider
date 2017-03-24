@@ -88,7 +88,7 @@ COOKIES_ENABLED = False
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     #'weibospider.pipelines.WeibospiderPipeline': 300,
-    'scrapy.contrib.pipeline.images.ImagesPipeline': 5,
+    'scrapy.contrib.pipeline.images.ImagesPipeline': 300,
     #'weibospider.pipelines.WBImgPipeline': 300,
 }
 
@@ -114,7 +114,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 FEED_EXPORT_ENCODING='utf-8'
-IMAGES_STORE = "C:\\Users\\Alan\\Desktop\\weibospider\\images"
+IMAGES_STORE = './test/images'
 IMAGES_EXPIRES = 90
 IMAGES_MIN_HEIGHT = 11
 IMAGES_MIN_WIDTH = 11

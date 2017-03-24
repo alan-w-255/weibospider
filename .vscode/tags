@@ -1,0 +1,81 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BOT_NAME	../weibospider/settings.py	/^BOT_NAME = 'weibospider'$/;"	kind:variable	line:12
+COOKIES_ENABLED	../weibospider/settings.py	/^COOKIES_ENABLED = False$/;"	kind:variable	line:58
+DB	../weibospider/db/db.py	/^class DB(object):$/;"	kind:class	line:3
+DetectProxy	../weibospider/proxydetect/detect.py	/^class DetectProxy(object):$/;"	kind:class	line:2
+FEED_EXPORT_ENCODING	../weibospider/settings.py	/^FEED_EXPORT_ENCODING='utf-8'$/;"	kind:variable	line:116
+IMAGES_EXPIRES	../weibospider/settings.py	/^IMAGES_EXPIRES = 90$/;"	kind:variable	line:118
+IMAGES_MIN_HEIGHT	../weibospider/settings.py	/^IMAGES_MIN_HEIGHT = 11$/;"	kind:variable	line:119
+IMAGES_MIN_WIDTH	../weibospider/settings.py	/^IMAGES_MIN_WIDTH = 11$/;"	kind:variable	line:120
+IMAGES_STORE	../weibospider/settings.py	/^IMAGES_STORE = '.\/images'$/;"	kind:variable	line:117
+IMAGES_THUMBS	../weibospider/settings.py	/^IMAGES_THUMBS = {$/;"	kind:variable	line:121
+ITEM_PIPELINES	../weibospider/settings.py	/^ITEM_PIPELINES = {$/;"	kind:variable	line:89
+NEWSPIDER_MODULE	../weibospider/settings.py	/^NEWSPIDER_MODULE = 'weibospider.spiders'$/;"	kind:variable	line:15
+PROXIES	../weibospider/settings.py	/^PROXIES = [$/;"	kind:variable	line:36
+ROBOTSTXT_OBEY	../weibospider/settings.py	/^ROBOTSTXT_OBEY = True$/;"	kind:variable	line:44
+RandomProxy	../weibospider/middlewares.py	/^class RandomProxy(object):$/;"	kind:class	line:31
+RandomUserAgent	../weibospider/middlewares.py	/^class RandomUserAgent(object):$/;"	kind:class	line:12
+SPIDER_MODULES	../weibospider/settings.py	/^SPIDER_MODULES = ['weibospider.spiders']$/;"	kind:variable	line:14
+USER_AGENTS	../weibospider/settings.py	/^USER_AGENTS = [$/;"	kind:variable	line:17
+WBspider.py	../weibospider/spiders/WBspider.py	1;"	kind:file	line:1
+WbspiderSpider	../weibospider/spiders/WBspider.py	/^class WbspiderSpider(scrapy.Spider):$/;"	kind:class	line:6
+WeibospiderItem	../weibospider/items.py	/^class WeibospiderItem(scrapy.Item):$/;"	kind:class	line:12
+WeibospiderPipeline	../weibospider/pipelines.py	/^class WeibospiderPipeline(object):$/;"	kind:class	line:22
+WeibospiderSpiderMiddleware	../weibospider/middlewares.py	/^class WeibospiderSpiderMiddleware(object):$/;"	kind:class	line:49
+__init__	../weibospider/db/db.py	/^    def __init__(self):$/;"	kind:member	line:5
+__init__	../weibospider/middlewares.py	/^    def __init__(self, agents):$/;"	kind:member	line:16
+__init__	../weibospider/middlewares.py	/^    def __init__(self, proxies):$/;"	kind:member	line:37
+__init__	../weibospider/proxydetect/detect.py	/^    def __init__(self):$/;"	kind:member	line:5
+__init__.py	../weibospider/__init__.py	1;"	kind:file	line:1
+__init__.py	../weibospider/db/__init__.py	1;"	kind:file	line:1
+__init__.py	../weibospider/proxydetect/__init__.py	1;"	kind:file	line:1
+__init__.py	../weibospider/spiders/__init__.py	1;"	kind:file	line:1
+attitudes_count	../weibospider/items.py	/^    attitudes_count = scrapy.Field()$/;"	kind:variable	line:21
+closeDB	../weibospider/db/db.py	/^    def closeDB(self):$/;"	kind:member	line:26
+comments_count	../weibospider/items.py	/^    comments_count = scrapy.Field()$/;"	kind:variable	line:22
+conn	../weibospider/db/db.py	/^    conn = psycopg2.connect($/;"	kind:variable	line:8
+create_at	../weibospider/items.py	/^    create_at = scrapy.Field()$/;"	kind:variable	line:17
+create_cardlist_url	../weibospider/spiders/WBspider.py	/^        def create_cardlist_url(user_id, page_num):$/;"	kind:function	line:70
+create_comment_ajax_requests	../weibospider/spiders/WBspider.py	/^    def create_comment_ajax_requests(self, response: 'cardlist response', page_num):$/;"	kind:member	line:15
+create_mblog_page_requests	../weibospider/spiders/WBspider.py	/^    def create_mblog_page_requests(self, response: 'msg_response', page_num):$/;"	kind:member	line:50
+create_msg_url	../weibospider/spiders/WBspider.py	/^        def create_msg_url(comment_id, page_num):$/;"	kind:function	line:31
+db	../weibospider/play.py	/^db = db()$/;"	kind:variable	line:12
+db.py	../weibospider/db/db.py	1;"	kind:file	line:1
+delete	../weibospider/db/db.py	/^    def delete(self, values):$/;"	kind:member	line:19
+detect.py	../weibospider/proxydetect/detect.py	1;"	kind:file	line:1
+from_crawler	../weibospider/middlewares.py	/^    def from_crawler(cls, crawler):$/;"	kind:member	line:21
+from_crawler	../weibospider/middlewares.py	/^    def from_crawler(cls, crawler):$/;"	kind:member	line:41
+from_crawler	../weibospider/middlewares.py	/^    def from_crawler(cls, crawler):$/;"	kind:member	line:55
+get_commentids	../weibospider/spiders/WBspider.py	/^        def get_commentids(response: 'cardlist response'):$/;"	kind:function	line:19
+get_userids	../weibospider/spiders/WBspider.py	/^        def get_userids(response):$/;"	kind:function	line:55
+image_urls	../weibospider/items.py	/^    image_urls = scrapy.Field()$/;"	kind:variable	line:23
+images	../weibospider/items.py	/^    images = scrapy.Field()$/;"	kind:variable	line:24
+insert	../weibospider/db/db.py	/^    def insert(self, values):$/;"	kind:member	line:16
+isAlive	../weibospider/proxydetect/detect.py	/^    def isAlive(proxy):$/;"	kind:member	line:9
+itemid	../weibospider/items.py	/^    itemid = scrapy.Field()$/;"	kind:variable	line:15
+items.py	../weibospider/items.py	1;"	kind:file	line:1
+mblog_text	../weibospider/items.py	/^    mblog_text = scrapy.Field()$/;"	kind:variable	line:16
+middlewares.py	../weibospider/middlewares.py	1;"	kind:file	line:1
+name	../weibospider/spiders/WBspider.py	/^    name = "wbspider"$/;"	kind:variable	line:7
+parse	../weibospider/spiders/WBspider.py	/^    def parse(self, response):$/;"	kind:member	line:92
+pipelines.py	../weibospider/pipelines.py	1;"	kind:file	line:1
+play.py	../weibospider/play.py	1;"	kind:file	line:1
+process_item	../weibospider/pipelines.py	/^    def process_item(self, item, spider):$/;"	kind:member	line:23
+process_request	../weibospider/middlewares.py	/^    def process_request(self, request, spider):$/;"	kind:member	line:24
+process_request	../weibospider/middlewares.py	/^    def process_request(self, request, spider):$/;"	kind:member	line:44
+process_spider_exception	../weibospider/middlewares.py	/^    def process_spider_exception(response, exception, spider):$/;"	kind:member	line:76
+process_spider_input	../weibospider/middlewares.py	/^    def process_spider_input(response, spider):$/;"	kind:member	line:61
+process_spider_output	../weibospider/middlewares.py	/^    def process_spider_output(response, result, spider):$/;"	kind:member	line:68
+process_start_requests	../weibospider/middlewares.py	/^    def process_start_requests(start_requests, spider):$/;"	kind:member	line:84
+settings.py	../weibospider/settings.py	1;"	kind:file	line:1
+spider_opened	../weibospider/middlewares.py	/^    def spider_opened(self, spider):$/;"	kind:member	line:93
+start_urls	../weibospider/spiders/WBspider.py	/^    start_urls=[$/;"	kind:variable	line:9
+update	../weibospider/db/db.py	/^    def update(self, id, values):$/;"	kind:member	line:23
+user_gender	../weibospider/items.py	/^    user_gender = scrapy.Field()$/;"	kind:variable	line:20
+user_id	../weibospider/items.py	/^    user_id = scrapy.Field()$/;"	kind:variable	line:18
+user_screen_name	../weibospider/items.py	/^    user_screen_name = scrapy.Field()$/;"	kind:variable	line:19

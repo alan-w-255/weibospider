@@ -7,9 +7,9 @@ class WbspiderSpider(scrapy.Spider):
     name = "wbspider"
 
     start_urls=[
-        'http://m.weibo.cn/container/getIndex?type=uid&value=1239246050&containerid=1076031239246050',
-        'http://m.weibo.cn/container/getIndex?uid=3200673035&featurecode=20000180&type=uid&value=1239246050&containerid=1076033200673035',
-        'http://m.weibo.cn/container/getIndex?uid=1502739807&featurecode=20000180&type=uid&value=1239246050&containerid=1076031502739807',
+        'http://m.weibo.cn/container/getIndex?type=uid&value=1502844527&containerid=1076031502844527',
+        'http://m.weibo.cn/container/getIndex?type=uid&value=2893057857&containerid=1076032893057857',
+        'http://m.weibo.cn/container/getIndex?type=uid&value=5688724856&containerid=1076035688724856',
     ]
 
     def create_comment_ajax_requests(self, response: 'cardlist response', page_num):
