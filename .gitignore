@@ -1,6 +1,8 @@
 # 忽略所有图片
-weibospider/images/*
-# 忽略测试文件
-out.json
+images/*
 # 忽略所有编译文件
 weibospider/__pycache__/*
+# 忽略所有json文件
+*.json
+*.log
+images.rar
