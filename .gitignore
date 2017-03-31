@@ -6,3 +6,5 @@ weibospider/__pycache__/*
 *.json
 *.log
 images.rar
+*.pyc
+test/*

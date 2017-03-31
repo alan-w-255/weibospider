@@ -14,7 +14,7 @@ class WeibospiderItem(scrapy.Item):
     # name = scrapy.Field()
     itemid = scrapy.Field()
     mblog_text = scrapy.Field()
-    create_at = scrapy.Field()
+    created_at = scrapy.Field()
     user_id = scrapy.Field()
     user_screen_name = scrapy.Field()
     user_gender = scrapy.Field()
@@ -22,3 +22,4 @@ class WeibospiderItem(scrapy.Item):
     comments_count = scrapy.Field()
     image_urls = scrapy.Field()
     images = scrapy.Field()
+    scheme = scrapy.Field()

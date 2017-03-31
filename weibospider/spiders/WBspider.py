@@ -109,42 +109,43 @@ class WbspiderSpider(scrapy.Spider):
             cards = response_json['cards']
             for card in cards:
                 if card['card_type'] == 9:
-                    _item = WeibospiderItem()
-                    #_item['itemid'] = card['itemid']
-                    #_item['mblog_text'] = card['mblog']['text']
-                    #_item['created_at'] = card['mblog']['created_at']
-                    #_item['user_id'] = card['mblog']['user']['id']
-                    #_item['user_screen_name'] = card['mblog']['user']['screen_name']
-                    #_item['user_gender'] = card['mblog']['user']['gender']
-                    #_item['attitudes_count'] = card['mblog']['attitudes_count']
-                    #_item['comments_count'] = card['mblog']['comments_count']
-
-                    #get image urls of every mblog
+                        #get image urls of every mblog
                     _p_urls = []
                     try:
                         pics = card['mblog']['pics']
-                        pics_urls = []
                         for _p in pics:
                             print(_p['url'])
-                            pics_urls.append(_p['url'])
-                        _item['image_urls'] = pics_urls
-                        _p_urls = pics_urls
+                            _p_urls.append(_p['url'])
                     except Exception as e:
                         pass
 
+                    _item = WeibospiderItem()
+                    _item['itemid'] = card['itemid']
+                    _item['scheme'] = card['scheme']
+                    _item['mblog_text'] = card['mblog']['text']
+                    _item['created_at'] = card['mblog']['created_at']
+                    _item['user_id'] = card['mblog']['user']['id']
+                    _item['user_screen_name'] = card['mblog']['user']['screen_name']
+                    _item['user_gender'] = card['mblog']['user']['gender']
+                    _item['attitudes_count'] = card['mblog']['attitudes_count']
+                    _item['comments_count'] = card['mblog']['comments_count']
+                    _item['image_urls'] = _p_urls
+
                     yield _item
 
-                    yield {
-                        'itemid': card['itemid'],
-                        'created_at': card['mblog']['created_at'],
-                        'user_id': card['mblog']['user']['id'],
-                        'user_screen_name': card['mblog']['user']['screen_name'],
-                        'user_gender': card['mblog']['user']['gender'],
-                        'mblog_text': card['mblog']['text'],
-                        'attitudes_count': card['mblog']['attitudes_count'],
-                        'comments_count': card['mblog']['comments_count'],
-                        'pics_urls': _p_urls
-                    }
+
+                    # yield {
+                    #     'itemid': card['itemid'],
+                    #     'itemurl': card['scheme'],
+                    #     'created_at': card['mblog']['created_at'],
+                    #     'user_id': card['mblog']['user']['id'],
+                    #     'user_screen_name': card['mblog']['user']['screen_name'],
+                    #     'user_gender': card['mblog']['user']['gender'],
+                    #     'mblog_text': card['mblog']['text'],
+                    #     'attitudes_count': card['mblog']['attitudes_count'],
+                    #     'comments_count': card['mblog']['comments_count'],
+                    #     'pics_urls': _p_urls
+                    # }
         elif _response_type == 'msg':
             mblog_page_requests = self.create_mblog_page_requests(response, 1)
             for r in mblog_page_requests:
