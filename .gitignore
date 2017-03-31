@@ -3,7 +3,6 @@ images/*
 # 忽略所有编译文件
 weibospider/__pycache__/*
 # 忽略所有json文件
-*.json
 *.log
 images.rar
 *.pyc
