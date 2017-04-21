@@ -47,7 +47,7 @@ class WbspiderSpider(scrapy.Spider):
         return _req
 
 
-    def create_mblog_page_requests(self, response: 'msg_response', page_num):
+    def create_mblog_page_requests(self, response, page_num):
         """
         根据msg_response返回page=page_num 的request for cardlist
         """
@@ -133,19 +133,6 @@ class WbspiderSpider(scrapy.Spider):
 
                     yield _item
 
-
-                    # yield {
-                    #     'itemid': card['itemid'],
-                    #     'itemurl': card['scheme'],
-                    #     'created_at': card['mblog']['created_at'],
-                    #     'user_id': card['mblog']['user']['id'],
-                    #     'user_screen_name': card['mblog']['user']['screen_name'],
-                    #     'user_gender': card['mblog']['user']['gender'],
-                    #     'mblog_text': card['mblog']['text'],
-                    #     'attitudes_count': card['mblog']['attitudes_count'],
-                    #     'comments_count': card['mblog']['comments_count'],
-                    #     'pics_urls': _p_urls
-                    # }
         elif _response_type == 'msg':
             mblog_page_requests = self.create_mblog_page_requests(response, 1)
             for r in mblog_page_requests:

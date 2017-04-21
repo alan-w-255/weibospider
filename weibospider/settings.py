@@ -33,15 +33,15 @@ USER_AGENTS = [
     "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52",
 ]
 
-PROXIES = [
-    #爬虫代理
-]
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'weibospider (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
+
+# PROXY = [
+#  # proxy ip
+# ]
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -74,9 +74,10 @@ COOKIES_ENABLED = False
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
+DOWNLOADER_MIDDLEWARES = {
 #    'weibospider.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+    'weibospider.middlewares.RandomUserAgent': 543,
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -88,7 +89,8 @@ COOKIES_ENABLED = False
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     #'weibospider.pipelines.WeibospiderPipeline': 300,
-    'scrapy.contrib.pipeline.images.ImagesPipeline': 300,
+    #'scrapy.pipelines.images.ImagesPipeline': 300,
+    'weibospider.pipelines.PostgreSQLPipeline': 500,
     #'weibospider.pipelines.WBImgPipeline': 300,
 }
 
@@ -119,7 +121,6 @@ IMAGES_EXPIRES = 90
 IMAGES_MIN_HEIGHT = 11
 IMAGES_MIN_WIDTH = 11
 IMAGES_THUMBS = {
-    'small': (50, 50),
-    'big': (270, 270),
+    'big': (270, 270)
 }
 

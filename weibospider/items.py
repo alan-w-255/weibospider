@@ -6,12 +6,12 @@
 # http://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
-from scrapy.contrib.pipeline.images import ImagesPipeline
+#from scrapy.pipelines.images import ImagesPipeline
 
 
 class WeibospiderItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
+
     itemid = scrapy.Field()
     mblog_text = scrapy.Field()
     created_at = scrapy.Field()

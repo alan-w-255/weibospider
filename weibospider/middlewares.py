@@ -23,27 +23,27 @@ class RandomUserAgent(object):
 
     def process_request(self, request, spider):
         _agent = random.choice(self.agents)
-        request.header.setdefault("User-Agent", _agent)
+        request.headers.setdefault("User-Agent", _agent)
         print("*************************usering agent**************")
         print(_agent)
 
 
-class RandomProxy(object):
-    """
-    使用随机的 proxy, 防止被ban
-    """
-    #TODO: 调用数据库， 从中获取proxy
-    
-    def __init__(self, proxies):
-        self.proxies = proxies
-
-    @classmethod
-    def from_crawler(cls, crawler):
-        return cls(crawler.settings.getlist('PROXIES'))
-
-    def process_request(self, request, spider):
-        _proxy = random.choice(self.proxies)
-        request.meta['proxy'] = _proxy
+# class RandomProxy(object):
+#     """
+#     使用随机的 proxy, 防止被ban
+#     """
+#     #TODO: 调用数据库， 从中获取proxy
+#     
+#     def __init__(self, proxies):
+#         self.proxies = proxies
+# 
+#     @classmethod
+#     def from_crawler(cls, crawler):
+#         return cls(crawler.settings.getlist('PROXIES'))
+# 
+#     def process_request(self, request, spider):
+#         _proxy = random.choice(self.proxies)
+#         request.meta['proxy'] = _proxy
 
 
 class WeibospiderSpiderMiddleware(object):
