@@ -11,8 +11,6 @@ import scrapy
 
 class WeibospiderItem(scrapy.Item):
     # define the fields for your item here like:
-
-    itemid = scrapy.Field()
     mblog_text = scrapy.Field()
     created_at = scrapy.Field()
     user_id = scrapy.Field()

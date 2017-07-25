@@ -7,3 +7,4 @@ weibospider/__pycache__/*
 images.rar
 *.pyc
 test/*
+sql/

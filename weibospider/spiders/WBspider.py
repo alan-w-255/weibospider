@@ -120,7 +120,6 @@ class WbspiderSpider(scrapy.Spider):
                         pass
 
                     _item = WeibospiderItem()
-                    _item['itemid'] = card['itemid']
                     _item['scheme'] = card['scheme']
                     _item['mblog_text'] = card['mblog']['text']
                     _item['created_at'] = card['mblog']['created_at']

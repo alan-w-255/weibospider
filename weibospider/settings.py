@@ -37,7 +37,7 @@ USER_AGENTS = [
 #USER_AGENT = 'weibospider (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # PROXY = [
 #  # proxy ip
@@ -90,6 +90,7 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
     #'weibospider.pipelines.WeibospiderPipeline': 300,
     #'scrapy.pipelines.images.ImagesPipeline': 300,
+    'weibospider.pipelines.PreProcessPipeline': 300,
     'weibospider.pipelines.PostgreSQLPipeline': 500,
     #'weibospider.pipelines.WBImgPipeline': 300,
 }

@@ -24,8 +24,8 @@ class RandomUserAgent(object):
     def process_request(self, request, spider):
         _agent = random.choice(self.agents)
         request.headers.setdefault("User-Agent", _agent)
-        print("*************************usering agent**************")
-        print(_agent)
+        # print("*************************usering agent**************")
+        # print(_agent)
 
 
 # class RandomProxy(object):
