@@ -73,14 +73,3 @@ class PostgreSQLPipeline(object):
                 cur.close()
         conn.close()
         return item
-
-
-
-
-
-
-
-
-
-
-

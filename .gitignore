@@ -8,3 +8,5 @@ images.rar
 *.pyc
 test/*
 sql/
+venv/
+.vscode/
