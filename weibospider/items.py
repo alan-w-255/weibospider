@@ -21,3 +21,4 @@ class WeibospiderItem(scrapy.Item):
     image_urls = scrapy.Field()
     images = scrapy.Field()
     scheme = scrapy.Field()
+    user_followers_count = scrapy.Field()
