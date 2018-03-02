@@ -91,6 +91,7 @@ ITEM_PIPELINES = {
     #'weibospider.pipelines.WeibospiderPipeline': 300,
     #'scrapy.pipelines.images.ImagesPipeline': 300,
     'weibospider.pipelines.PreProcessPipeline': 300,
+    'weibospider.pipelines.MongoPipeline': 400
     # 'weibospider.pipelines.PostgreSQLPipeline': 500,
     #'weibospider.pipelines.WBImgPipeline': 300,
 }
@@ -125,3 +126,8 @@ IMAGES_THUMBS = {
     'big': (270, 270)
 }
 
+# mongo db
+
+MONGO_URI = 'mongodb://localhost:27017'
+
+MONGO_DATABASE = 'wbdata'

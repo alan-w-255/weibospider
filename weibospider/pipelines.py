@@ -16,7 +16,7 @@ import scrapy
 import psycopg2
 import base64
 from weibospider.items import WeibospiderItem
-import logging
+import pymongo
 
 class PreProcessPipeline(object):
     """
@@ -64,7 +64,6 @@ class PostgreSQLPipeline(object):
             cur = conn.cursor()
             cur.execute(sql_insert_weibo)
             conn.commit()
-            logging.debug('Data added to PostgreSQL DB')
         except Exception as e:
             print('insert record into table failed')
             print(e)
@@ -72,4 +71,53 @@ class PostgreSQLPipeline(object):
             if cur:
                 cur.close()
         conn.close()
+        return item
+
+    '''
+    把数据存入sqlite3数据库
+    '''
+    def __init__(self, sqlite_db):
+        self.sqlite_db = sqlite_db
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(
+            sqlite_db=crawler.settings.get('SQLITE_DB')
+        )
+    def open_spider(self, spider):
+        self.sqConn = sqlite3.connect(self.sqlite_uri)
+        self.sqCursor = sq.sqConn.cursor()
+    
+    def close_spider(self, spider):
+        self.sqConn.close()
+
+    def process_item(self, item, spider):
+        QUERY_INSERT_ITEM = '''\
+        insert into wbdata(mblog_text, create_at, user_id)
+        '''
+    
+class MongoPipeline(object):
+
+    collection_name = 'scrapy_items'
+
+    def __init__(self, mongo_uri, mongo_db):
+        self.mongo_uri = mongo_uri
+        self.mongo_db = mongo_db
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(
+            mongo_uri=crawler.settings.get('MONGO_URI'),
+            mongo_db=crawler.settings.get('MONGO_DATABASE', 'items')
+        )
+    
+    def open_spider(self, spider):
+        self.client = pymongo.MongoClient(self.mongo_uri)
+        self.db = self.client[ self.mongo_db ]
+    
+    def close_spider(self, spider):
+        self.client.close()
+    
+    def process_item(self, item, spider):
+        self.db[self.collection_name].insert_one(dict(item))
         return item
