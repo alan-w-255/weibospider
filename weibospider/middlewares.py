@@ -27,6 +27,20 @@ class RandomUserAgent(object):
         # print("*************************usering agent**************")
         # print(_agent)
 
+class MobileUserAgent(object):
+    """
+    使用移动端请求
+    """
+    def __init__(self, agent):
+        self.agent = agent
+    
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler.settings.getlist('MOBILE_USER_AGENT'))
+    
+    def process_request(self, request, spider):
+        request.headers.setdefault('User-Agent', self.agent)
+
 
 # class RandomProxy(object):
 #     """

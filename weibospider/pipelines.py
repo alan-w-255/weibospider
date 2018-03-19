@@ -22,15 +22,29 @@ class PreProcessPipeline(object):
     """
     格式化日期
     """
-    def process_item(self, item, spider):
-        if '前' in item['created_at'] or '今天' in item['created_at']:
-            item['created_at'] = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+    def __formatDatetime(self, datetime):
+        if '前' in datetime or '今天' in datetime:
+            datetime = time.strftime('%Y-%m-%d', time.localtime(time.time()))
         else:
-            t = item['created_at'].split(' ')[0]
+            t = datetime.split(' ')[0]
             if len(t) == 5:
-                t = '2017-' + t
-            item['created_at'] = t
+                t = '2018-' + t
+            datetime = t
+        return datetime
 
+    def __cleanTags(self, text):
+        import re
+        p = re.compile(r'</?\w+[^>]*>', re.I)
+        return re.sub(p, '', text)
+    
+    def __stripSpace(self, text):
+        return text.replace('\u200b', '')
+
+    def process_item(self, item, spider):
+
+        item['created_at'] = self.__formatDatetime(item['created_at'])
+        item['mblog_text'] = self.__cleanTags(item['mblog_text'])
+        item['mblog_text'] = self.__stripSpace(item['mblog_text'])
         return item
 
 
@@ -50,7 +64,7 @@ class PostgreSQLPipeline(object):
             insert into weibo_crawled_data (mblog_text, created_at, user_id, user_screen_name, user_gender, attitudes_count, comments_count, image_urls, scheme) values('{mblog_text}', '{created_at}', {user_id}, '{user_screen_name}', '{user_gender}', {attitudes_count}, {comments_count}, '{image_urls}', '{scheme}')
         '''.format(
             mblog_text=mblog_text,
-            created_at=item['created_at'],
+            created_at=datetime,
             user_id=item['user_id'],
             user_screen_name=item['user_screen_name'],
             user_gender=item['user_gender'],

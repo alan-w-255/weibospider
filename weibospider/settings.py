@@ -49,13 +49,13 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+# DOWNLOAD_DELAY = 0
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED = False
+# COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -76,7 +76,8 @@ COOKIES_ENABLED = False
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
 #    'weibospider.middlewares.MyCustomDownloaderMiddleware': 543,
-    'weibospider.middlewares.RandomUserAgent': 543,
+    # 'weibospider.middlewares.RandomUserAgent': 543,
+    'weibospider.middlewares.MobileUserAgent': 544,
 }
 
 # Enable or disable extensions
@@ -93,7 +94,7 @@ ITEM_PIPELINES = {
     'weibospider.pipelines.PreProcessPipeline': 300,
     'weibospider.pipelines.MongoPipeline': 400
     # 'weibospider.pipelines.PostgreSQLPipeline': 500,
-    #'weibospider.pipelines.WBImgPipeline': 300,
+    # 'weibospider.pipelines.WBImgPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -131,3 +132,7 @@ IMAGES_THUMBS = {
 MONGO_URI = 'mongodb://localhost:27017'
 
 MONGO_DATABASE = 'wbdata'
+
+# mobile user agent
+
+MOBILE_USER_AGENT = 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'

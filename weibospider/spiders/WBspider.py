@@ -7,9 +7,7 @@ class WbspiderSpider(scrapy.Spider):
     name = "wbspider"
 
     start_urls=[
-        'http://m.weibo.cn/container/getIndex?type=uid&value=1502844527&containerid=1076031502844527',
-        'http://m.weibo.cn/container/getIndex?type=uid&value=2893057857&containerid=1076032893057857',
-        'http://m.weibo.cn/container/getIndex?type=uid&value=5688724856&containerid=1076035688724856',
+        'https://m.weibo.cn/api/container/getIndex?jumpfrom=weibocom&containerid=1008084e073a22a66dfd2fd8a9c2f8defd31d5_-_feed'
     ]
 
 
@@ -36,27 +34,9 @@ class WbspiderSpider(scrapy.Spider):
 
         return _item
 
-    def _createNewRequest(self, user_id, page_num):
-        url_template = 'http://m.weibo.cn/container/getIndex?type=uid&value={userid}&containerid=107603{userid}'
-        url = None
-        if page_num == 1:
-            url = url_template.format(userid=user_id)
-        else:
-            url_template += '&page={page_num}'
-            url = url_template.format(userid=user_id, page_num=page_num)
-        return url
-
-    def _handleCardType11(self, card):
-        # 从card type 11 中获取用户关注账号的id, 生成新的请求的列表
-        following_users = []
-        newRequests = []
-        for _c in card['card_group']:
-            if _c['card_type'] == 24:
-                for _u in _c['elements']:
-                    following_users.append(_u['uid'])
-        for _u in following_users:
-            newRequests.append(self._createNewRequest(_u, 1))
-        return newRequests
+    def _createNewRequestUrl(self, since_id):
+        url_template = 'https://m.weibo.cn/api/container/getIndex?jumpfrom=weibocom&containerid=1008084e073a22a66dfd2fd8a9c2f8defd31d5_-_feed&since_id={since_id}'
+        return url_template.format(since_id=since_id)
 
 
     def parse(self, response):
@@ -66,15 +46,22 @@ class WbspiderSpider(scrapy.Spider):
         if response_json['ok'] != 1:
             self.logger.info('未返回期望结果!')
         else:
-            WBCards = response_json['data']['cards']
-            for WBCard in WBCards:
-                if WBCard['card_type'] == 9:
-                    # 9 号类型卡片, 微博类型, 提取微博文章信息.
+            # 提取since_id
+            try:
+                since_id = response_json['data']['pageInfo']['since_id']
+                yield scrapy.Request(self._createNewRequestUrl(since_id))
+            except KeyError as e:
+                pass
 
-                    yield self._extractCardType9Info(WBCard)
-                elif WBCard['card_type'] == 11:
-                    # 该用户关注的微博用户的信息
-                    for _r in self._handleCardType11(WBCard):
-                        yield scrapy.Request(_r)
+            WBCards = response_json['data']['cards']
+            for _c in WBCards:
+                if _c['card_type'] == '11':
+                    for WBCard in _c['card_group']:
+                        if WBCard['card_type'] == 9:
+                            print('card type 9')
+                            # 9 号类型卡片, 微博类型, 提取微博文章信息.
+                            yield self._extractCardType9Info(WBCard)
+                        else:
+                            pass
                 else:
                     pass
