@@ -15,11 +15,12 @@ def getWikiTags(placeName):
     res = s.get(tpl_url.format(keywd=placeName))
     soup = BeautifulSoup(res.text, 'lxml')
     open_tag_item = soup.find('dd', id='open-tag-item')
-    tags = open_tag_item.find_all('span', class_='taglist')
     results = []
-    for t in tags:
-        results.append(t.text.encode(res.encoding).decode('utf8')
-        .strip('\n').strip(',').strip('，').strip())
+    if open_tag_item is not None:
+        tags = open_tag_item.find_all('span', class_='taglist')
+        for t in tags:
+            results.append(t.text.encode(res.encoding).decode('utf8')
+            .strip('\n').strip(',').strip('，').strip())
     return results
 
 
